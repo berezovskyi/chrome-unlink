@@ -4,12 +4,12 @@ skipLinkShortener = function(arg){
 
   console.log("Source " + srcUrl);
 
-  var shst_regex = /http:\/\/sh\.st\/st\/(\w+)\/http:\/\/(.*)$/
+  var shst_regex = /^http(s?):\/\/sh\.st\/st\/(\w+)\/http(s?):\/\/(.*)$/
   var match = srcUrl.match(shst_regex);
   if(match != null && match.length >= 3) {
     console.log("Match " + match);
 
-    dstUrl = "http://" + match[2];
+    dstUrl = "http://" + match[4];
   }
   // TODO alternate between approches based on 'Ctrl' key status
   // chrome.tabs.create({url: dstUrl});
