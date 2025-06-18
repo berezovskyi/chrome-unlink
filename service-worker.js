@@ -31,3 +31,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     skipLinkShortener({ linkUrl: info.linkUrl }, tab);
   }
 });
+
+
+// Add at the bottom of service-worker.js
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { skipLinkShortener };
+}

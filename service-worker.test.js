@@ -1,30 +1,25 @@
-// Import the function to be tested
-// Note: If skipLinkShortener is not explicitly exported, this will require modification.
-// For now, assume it's made available for testing, or we'll adjust if the subtask fails.
-// We might need to temporarily modify service-worker.js to export it if it's not globally available
-// or use a different approach to load it if it's a global function.
-
-// Mock the Chrome API
+/**
+ * @jest-environment node
+ */
+// Mock chrome API for testing (must be before require)
 global.chrome = {
   tabs: {
     update: jest.fn(),
   },
-  // Add other parts of the chrome API if needed by the function
+  runtime: {
+    onInstalled: {
+      addListener: jest.fn(),
+    },
+  },
+  contextMenus: {
+    create: jest.fn(),
+    onClicked: {
+      addListener: jest.fn(),
+    },
+  },
 };
 
-// Load the service-worker.js script.
-// This is a common way to load scripts that define global functions or attach to global objects.
-// However, this can have side effects (like context menu creation).
-// A cleaner way would be to export skipLinkShortener from service-worker.js.
-// For now, let's try this and see.
-const fs = require('fs');
-const path = require('path');
-const serviceWorkerCode = fs.readFileSync(
-  path.resolve(__dirname, 'service-worker.js'),
-  'utf8'
-);
-// This eval can be risky. If it fails, we'll need to refactor service-worker.js for export.
-eval(serviceWorkerCode);
+const { skipLinkShortener } = require('./service-worker.js');
 
 describe('skipLinkShortener', () => {
   beforeEach(() => {
