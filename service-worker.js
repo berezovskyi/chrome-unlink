@@ -34,7 +34,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-
 // Add at the bottom of service-worker.js
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { skipLinkShortener };
