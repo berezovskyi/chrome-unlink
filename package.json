@@ -5,7 +5,8 @@
   "main": "service-worker.js",
   "scripts": {
     "test": "jest",
-    "format:check": "prettier --check ."
+    "format:check": "prettier . --check",
+    "format:apply": "prettier . --write"
   },
   "keywords": [],
   "devDependencies": {

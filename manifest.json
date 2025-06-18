@@ -10,10 +10,7 @@
     "128": "img/molecular1_128.png",
     "256": "img/molecular1_256.png"
   },
-  "permissions": [
-    "contextMenus",
-    "tabs"
-  ],
+  "permissions": ["contextMenus", "tabs"],
   "background": {
     "service_worker": "service-worker.js"
   }
