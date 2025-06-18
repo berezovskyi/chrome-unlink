@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 module.exports = {
   clearMocks: true,
   testEnvironment: 'node', // Or 'jsdom' if DOM interaction is needed, but for service-worker, 'node' is often fine.

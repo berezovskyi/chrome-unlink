@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 var skipLinkShortener = function (arg, tab) {
   // Modified signature
   var srcUrl = arg.linkUrl;

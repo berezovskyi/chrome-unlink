@@ -1,5 +1,4 @@
 /* eslint-env jest, node */
-/* global require, describe, test, expect, beforeEach */
 
 /**
  * @jest-environment node
