@@ -1,0 +1,20 @@
+{
+  "name": "unlink-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "jest",
+    "format:check": "prettier . --check",
+    "format:apply": "prettier . --write",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "devDependencies": {
+    "eslint": "8.50.0",
+    "prettier": "3.2.5",
+    "jest": "^29.7.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
