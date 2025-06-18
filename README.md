@@ -6,3 +6,9 @@ the extension via a right-click on the shortened link.
 ## Preparing for Firefox submission
 
     zip -d Archive.zip "__MACOSX*"
+
+## Dev loop
+
+```sh
+npm run test && npm run lint && npm run format:apply
+```
