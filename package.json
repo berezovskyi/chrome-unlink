@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "format:check": "prettier . --check",
-    "format:apply": "prettier . --write"
+    "format:apply": "prettier . --write",
+    "lint": "eslint ."
   },
   "keywords": [],
   "devDependencies": {
