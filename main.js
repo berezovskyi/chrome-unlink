@@ -1,5 +1,5 @@
-skipLinkShortener = function(arg){
-  var srcUrl = arg.linkUrl;
+const skipLinkShortener = function(info, tab) {
+  var srcUrl = info.linkUrl;
   var dstUrl = srcUrl; // safe default
 
   console.log("Source " + srcUrl);
@@ -13,13 +13,28 @@ skipLinkShortener = function(arg){
   }
   // TODO alternate between approches based on 'Ctrl' key status
   // chrome.tabs.create({url: dstUrl});
-  chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
-    chrome.tabs.update(tabs[0].id, {url: dstUrl});
-  });
+
+  if (tab && tab.id) {
+    chrome.tabs.update(tab.id, {url: dstUrl});
+  } else {
+    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+      if (tabs && tabs.length > 0) {
+        chrome.tabs.update(tabs[0].id, {url: dstUrl});
+      }
+    });
+  }
 };
 
-chrome.contextMenus.create({
-  title: "Skip the link shortener",
-  contexts:["link"],
-  onclick: skipLinkShortener
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "skip-link-shortener",
+    title: "Skip the link shortener",
+    contexts: ["link"]
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "skip-link-shortener") {
+    skipLinkShortener(info, tab);
+  }
 });
